@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-from tensorflow.keras.models import load_model
 import streamlit as st
 import pickle
 from sklearn.preprocessing import StandardScaler, OneHotEncoder, LabelEncoder
@@ -16,7 +15,7 @@ with open ("OHE_Geography.pkl","rb") as file:
 with open ("Standard_Scaler","rb") as file:
     Standard_Scaler = pickle.load(file)
 
-model = load_model("ANN_model.h5")
+model = tensorflow.keras.models.load_model("ANN_model.h5")
 
 #Streamlit App
 st.title ("Churn Prediction App")
@@ -59,3 +58,4 @@ if st.button("Predict"):
     else:
 
         st.success(f"The Customer will not Churn with a probability of {1 - predict_proba}")
+
